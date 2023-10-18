@@ -1,17 +1,15 @@
 pipeline {
     agent any
-        tools{
+    tools{
         maven 'maven'
         }
-    }
-
     stages {
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
-        
+        // Define other stages here
         stage('Build and Package') {
             steps {
                 sh 'mvn clean install package'
@@ -44,3 +42,4 @@ pipeline {
             }
         }
     }
+}
