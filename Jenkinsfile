@@ -1,5 +1,5 @@
 pipeline {
-    agent any{
+    agent any
         tools{
         maven 'maven_3_9_5'
         }
@@ -40,8 +40,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'DockerHubCreds', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                     sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
                     sh 'docker push amir1adel/pipeline:1.0'
-                }
+                } 
             }
         }
     }
-}
