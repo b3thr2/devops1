@@ -18,7 +18,7 @@ pipeline {
         
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t amir1adel/pipeline:1.0 EcommerceApp/.'
+                sh 'docker build -t amir1adel/pipeline:1.0 .'
             }
         }
         stage('Remove Existing Docker Container') {
