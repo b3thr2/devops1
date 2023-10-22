@@ -1,7 +1,7 @@
 # Use the official WildFly image as the base image
 FROM jboss/wildfly:latest
 
-COPY *.war /opt/jboss/wildfly/standalone/deployments/
+COPY /target/*.war /opt/jboss/wildfly/standalone/deployments/
 EXPOSE 8080
 
 # Start WildFly in standalone mode
