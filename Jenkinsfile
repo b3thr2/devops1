@@ -13,6 +13,7 @@ pipeline {
         stage('Build and Package') {
             steps {
                 sh 'whoami'
+                sh 'pwd'
                 sh 'ls -l'
                 sh 'mvn clean install package'
             }
@@ -21,6 +22,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
             sh 'whoami'
+            sh 'pwd'
             sh 'ls -l'
             sh 'docker build -t amir1adel/pipeline:1.0 .'
             }
