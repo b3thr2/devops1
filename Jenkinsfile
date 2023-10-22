@@ -35,7 +35,7 @@ pipeline {
         }
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d -p 8082:8080 --name Eco-app-by-pipeline --host 0.0.0.0 amir1adel/pipeline:1.0 '
+               sh 'docker run -d -p 8082:8080 --name Eco-app-by-pipeline -e "HOST=0.0.0.0" amir1adel/pipeline:1.0'
             }
         }
         
