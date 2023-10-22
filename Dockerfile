@@ -5,7 +5,7 @@ FROM jboss/wildfly:latest
 # ENV VARIABLE_NAME=variable_value
 
 # Copy your EcommerceApp.war to the deployments folder in WildFly
-COPY jenkinsContainer:/var/jenkins_home/workspace/CICD_TEST_PIPELINE_DEPLOYING_ECOMM_APP/target/EcommerceApp.war /opt/jboss/wildfly/standalone/deployments/
+COPY EcommerceApp.war /opt/jboss/wildfly/standalone/deployments/
 
 # Expose the ports for WildFly (HTTP and management)
 EXPOSE 8080
