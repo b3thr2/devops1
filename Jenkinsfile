@@ -12,6 +12,7 @@ pipeline {
         // Define other stages here
         stage('Build and Package') {
             steps {
+                sh 'whoami'
                 sh 'mvn clean install package'
                 sh 'docker cp jenkinsContainer:/var/jenkins_home/workspace/CICD_TEST_PIPELINE_DEPLOYING_ECOMM_APP/target/EcommerceApp.war /root/git-repo-testPIPELINE/pipeline-automation'
             }
