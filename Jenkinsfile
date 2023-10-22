@@ -20,7 +20,6 @@ pipeline {
         stage('Build Docker Image') {
             steps {
             sh 'whoami'
-            sh 'docker exec -u 0 jenkinsContainer cp /var/jenkins_home/workspace/CICD_TEST_PIPELINE_DEPLOYING_ECOMM_APP/target/EcommerceApp.war /root/git-repo-testPIPELINE/pipeline-automation/.'
             sh 'docker build -t amir1adel/pipeline:1.0 .'
             }
         }
