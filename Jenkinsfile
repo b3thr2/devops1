@@ -13,6 +13,7 @@ pipeline {
         stage('Build and Package') {
             steps {
                 sh 'mvn clean install package'
+                sh 'docker cp jenkinsContainer:/var/jenkins_home/workspace/CICD_TEST_PIPELINE_DEPLOYING_ECOMM_APP/target/EcommerceApp.war /root/git-repo-testPIPELINE/pipeline-automation'
             }
         }
         
@@ -23,8 +24,8 @@ pipeline {
         }
         stage('Remove Existing Docker Container') {
             steps {
-                sh 'docker stop yourapp || true'
-                sh 'docker rm yourapp || true'
+                sh 'docker stop Eco-app-by-pipeline || true'
+                sh 'docker rm Eco-app-by-pipeline || true'
             }
         }
         stage('Run Docker Container') {
