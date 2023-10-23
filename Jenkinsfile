@@ -24,7 +24,7 @@ pipeline {
             sh 'whoami'
             sh 'pwd'
             sh 'ls -l'
-            sh 'docker build -t amir1adel/pipeline:1.0 .'
+            sh 'docker build -t b3thr2/aziz:3.1 .'
             }
         }
         stage('Remove Existing Docker Container') {
@@ -33,18 +33,16 @@ pipeline {
                 sh 'docker rm Eco-app-by-pipeline || true'
             }
         }
-        stage('Run Docker Container') {
-            steps {
-               sh 'docker run -d -p 8082:8080 --name Eco-app-by-pipeline -e "HOST=0.0.0.0" amir1adel/pipeline:1.0'
-            }
-        }
-        
-        stage('Push Docker Image') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'DockerHubCreds', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                    sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
-                    sh 'docker push amir1adel/pipeline:1.0'
-                } 
+       stage('Push image to Hub'){
+            steps{
+                script{
+                   withCredentials([usernamePassword(credentialsId: 'dockerhub-pwd', usernameVariable: 'USER' , passwordVariable: 'PASS')]) {
+                   sh 'docker login -u ${USER} -p ${PASS}'
+
+}
+                   sh 'docker push b3thr2/aziz:3.1'
+
+                }
             }
         }
     }
